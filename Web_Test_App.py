@@ -47,7 +47,7 @@ st.write(df.head())
 
 df_1= px.data.gapminder()
 fig = px.choropleth(df_1, locations="iso_alpha", color="lifeExp", hover_name="country", animation_frame="year", range_color=[20,80])
-fig.show()
+st.write(fig)
 
 movehub_rating = "None" #@param ["None", "Low", "Med", "High"]
 purchase_power = "High" #@param ["None", "Low", "Med", "High"]
@@ -78,7 +78,7 @@ fig = px.scatter_mapbox(df.sort_values('Score', ascending=False).round(),
                         hover_data=features,
                         color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=1,
                         mapbox_style="carto-positron")
-fig.show()
+st.write(fig)
 
 df.sort_values('Score', ascending=False)[['City', 'Score'] + features].round()
 
