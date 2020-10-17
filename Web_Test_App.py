@@ -1,279 +1,85 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 4,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "<streamlit.delta_generator.DeltaGenerator object at 0x000002A23CEFBEE0>\n"
-     ]
-    },
-    {
-     "data": {
-      "text/plain": [
-       "<streamlit.delta_generator.DeltaGenerator at 0x2a23cefbee0>"
-      ]
-     },
-     "execution_count": 4,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "# https://towardsdatascience.com/how-to-build-a-data-science-web-app-in-python-61d1bed65020\n",
-    "import yfinance as yf\n",
-    "import streamlit as st\n",
-    "\n",
-    "st.write(\"\"\"Shown are the stock closing price and volume of Google!\"\"\")\n",
-    "# Simple Stock Price App\n",
-    "\n",
-    "\n",
-    "# https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75\n",
-    "#define the ticker symbol\n",
-    "tickerSymbol = 'GOOGL'\n",
-    "#get data on this ticker\n",
-    "tickerData = yf.Ticker(tickerSymbol)\n",
-    "#get the historical prices for this ticker\n",
-    "tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')\n",
-    "# Open\tHigh\tLow\tClose\tVolume\tDividends\tStock Splits\n",
-    "\n",
-    "st.line_chart(tickerDf.Close)\n",
-    "st.line_chart(tickerDf.Volume)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 5,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/html": [
-       "<div>\n",
-       "<style scoped>\n",
-       "    .dataframe tbody tr th:only-of-type {\n",
-       "        vertical-align: middle;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe tbody tr th {\n",
-       "        vertical-align: top;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe thead th {\n",
-       "        text-align: right;\n",
-       "    }\n",
-       "</style>\n",
-       "<table border=\"1\" class=\"dataframe\">\n",
-       "  <thead>\n",
-       "    <tr style=\"text-align: right;\">\n",
-       "      <th></th>\n",
-       "      <th>Open</th>\n",
-       "      <th>High</th>\n",
-       "      <th>Low</th>\n",
-       "      <th>Close</th>\n",
-       "      <th>Volume</th>\n",
-       "      <th>Dividends</th>\n",
-       "      <th>Stock Splits</th>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>Date</th>\n",
-       "      <th></th>\n",
-       "      <th></th>\n",
-       "      <th></th>\n",
-       "      <th></th>\n",
-       "      <th></th>\n",
-       "      <th></th>\n",
-       "      <th></th>\n",
-       "    </tr>\n",
-       "  </thead>\n",
-       "  <tbody>\n",
-       "    <tr>\n",
-       "      <th>2010-06-01</th>\n",
-       "      <td>240.455460</td>\n",
-       "      <td>245.775772</td>\n",
-       "      <td>240.300293</td>\n",
-       "      <td>241.426422</td>\n",
-       "      <td>5328200</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2010-06-02</th>\n",
-       "      <td>243.583588</td>\n",
-       "      <td>247.182175</td>\n",
-       "      <td>240.970978</td>\n",
-       "      <td>246.931931</td>\n",
-       "      <td>5076500</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2010-06-03</th>\n",
-       "      <td>247.802795</td>\n",
-       "      <td>254.254257</td>\n",
-       "      <td>247.597595</td>\n",
-       "      <td>253.053055</td>\n",
-       "      <td>7294000</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2010-06-04</th>\n",
-       "      <td>250.110107</td>\n",
-       "      <td>254.879883</td>\n",
-       "      <td>248.598602</td>\n",
-       "      <td>249.609604</td>\n",
-       "      <td>7832700</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2010-06-07</th>\n",
-       "      <td>249.779785</td>\n",
-       "      <td>250.705704</td>\n",
-       "      <td>241.816818</td>\n",
-       "      <td>243.003006</td>\n",
-       "      <td>7258100</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>...</th>\n",
-       "      <td>...</td>\n",
-       "      <td>...</td>\n",
-       "      <td>...</td>\n",
-       "      <td>...</td>\n",
-       "      <td>...</td>\n",
-       "      <td>...</td>\n",
-       "      <td>...</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2020-05-22</th>\n",
-       "      <td>1403.900024</td>\n",
-       "      <td>1417.000000</td>\n",
-       "      <td>1395.949951</td>\n",
-       "      <td>1413.239990</td>\n",
-       "      <td>1427200</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2020-05-26</th>\n",
-       "      <td>1441.959961</td>\n",
-       "      <td>1445.109985</td>\n",
-       "      <td>1419.400024</td>\n",
-       "      <td>1421.369995</td>\n",
-       "      <td>2229500</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2020-05-27</th>\n",
-       "      <td>1420.000000</td>\n",
-       "      <td>1425.349976</td>\n",
-       "      <td>1394.599976</td>\n",
-       "      <td>1420.280029</td>\n",
-       "      <td>1584200</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2020-05-28</th>\n",
-       "      <td>1400.000000</td>\n",
-       "      <td>1444.459961</td>\n",
-       "      <td>1399.079956</td>\n",
-       "      <td>1418.239990</td>\n",
-       "      <td>1758500</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2020-05-29</th>\n",
-       "      <td>1420.430054</td>\n",
-       "      <td>1436.729980</td>\n",
-       "      <td>1415.979980</td>\n",
-       "      <td>1433.520020</td>\n",
-       "      <td>1852200</td>\n",
-       "      <td>0</td>\n",
-       "      <td>0.0</td>\n",
-       "    </tr>\n",
-       "  </tbody>\n",
-       "</table>\n",
-       "<p>2517 rows × 7 columns</p>\n",
-       "</div>"
-      ],
-      "text/plain": [
-       "                   Open         High          Low        Close   Volume  \\\n",
-       "Date                                                                      \n",
-       "2010-06-01   240.455460   245.775772   240.300293   241.426422  5328200   \n",
-       "2010-06-02   243.583588   247.182175   240.970978   246.931931  5076500   \n",
-       "2010-06-03   247.802795   254.254257   247.597595   253.053055  7294000   \n",
-       "2010-06-04   250.110107   254.879883   248.598602   249.609604  7832700   \n",
-       "2010-06-07   249.779785   250.705704   241.816818   243.003006  7258100   \n",
-       "...                 ...          ...          ...          ...      ...   \n",
-       "2020-05-22  1403.900024  1417.000000  1395.949951  1413.239990  1427200   \n",
-       "2020-05-26  1441.959961  1445.109985  1419.400024  1421.369995  2229500   \n",
-       "2020-05-27  1420.000000  1425.349976  1394.599976  1420.280029  1584200   \n",
-       "2020-05-28  1400.000000  1444.459961  1399.079956  1418.239990  1758500   \n",
-       "2020-05-29  1420.430054  1436.729980  1415.979980  1433.520020  1852200   \n",
-       "\n",
-       "            Dividends  Stock Splits  \n",
-       "Date                                 \n",
-       "2010-06-01          0           0.0  \n",
-       "2010-06-02          0           0.0  \n",
-       "2010-06-03          0           0.0  \n",
-       "2010-06-04          0           0.0  \n",
-       "2010-06-07          0           0.0  \n",
-       "...               ...           ...  \n",
-       "2020-05-22          0           0.0  \n",
-       "2020-05-26          0           0.0  \n",
-       "2020-05-27          0           0.0  \n",
-       "2020-05-28          0           0.0  \n",
-       "2020-05-29          0           0.0  \n",
-       "\n",
-       "[2517 rows x 7 columns]"
-      ]
-     },
-     "execution_count": 5,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "tickerDf"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.8.5"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 4
-}
+import yfinance as yf
+import pandas as pd
+import sklearn as sk
+import streamlit as st
+import plotly.express as px
+import numpy as np
+
+st.write("""
+# City Search Tool
+
+There are a lot of factors that go into making a big move, and for many people, the top priority is either their job or their family. But if you’re on your own and you have job flexibility to go basically wherever you want (i.e. you work remotely), then what? In that case, you have the luxury of finding a place that suits you—and not necessarily just your career.
+
+A myriad of decisions go into picking the perfect place to call home — political leanings, crime rates, walkability, affordability, religious affiliations, weather and more — can you make a tool that allows aggie graduates and others to find thier next move?
+
+[High speed internet](https://www.highspeedinternet.com/best-cities-to-live-work-remotely) (of all people?!) made a tool to do this.... but you can do better! Think of more factors: like median income of a location, cuisine, primary ethnicity, pollution index, happiness index, number of coffee shops or microbreweries in the city, etc. There's no end! Furthermore, maybe you are an international student and want to make this tool for global placement! Go for it! Maybe you want to penalize distance from POI's (points of interest) like family. Do it! The world is your oyster!
+
+#### Starter Datasets
+- [MoveHub City Ratings](https://www.kaggle.com/blitzr/movehub-city-rankings?select=movehubqualityoflife.csv)
+  - [Notebooks for ideas on how to use data](https://www.kaggle.com/blitzr/movehub-city-rankings/notebooks)
+- [World City Populations](https://www.kaggle.com/max-mind/world-cities-database?select=worldcitiespop.csv)
+- [Rental Price](https://www.kaggle.com/zillow/rent-index)
+
+#### Where to Find More Data
+- [Google Datasets](https://datasetsearch.research.google.com/)
+- [US Census](https://data.census.gov/cedsci/?q=United%20States)
+- [Kaggle Datasets](https://www.kaggle.com/datasets)
+
+
+#### How We Judge
+- *Data Use*: Effectively used data, acquired additional data
+- *Analytics*: Effective application of analytics (bonus points for ML/clustering techniques)
+- *Visualization*: Solution is visually appealing and useful (Bonus points if you create an interactive tool/ application/ website)
+- *Impact*: Clear impact of solution to solving problem
+
+#### Helpful Workshops
+- Intro to Python: Sat, 10:30-12:00
+- Statistics for Data Scientists: Sat, 10:30-12:00
+- How to Win TAMU Datathon: Sat, 13:00-14:00
+- Data Wrangling: Sat, 17:00-18:15
+- Data Visualization: Sat, 18:30-19:45
+- Machine Learning Part 1 - Theory: Sat, 20:00-21:15
+- Machine Learning Part 2 - Applied: Sat, 21:30-22:45
+""")
+
+df = pd.read_csv('https://drive.google.com/uc?id=1hSMhl-JeTCX-t72KjhasTQoL1LdWSRhw')
+st.write(df.head())
+
+df_1= px.data.gapminder()
+fig = px.choropleth(df_1, locations="iso_alpha", color="lifeExp", hover_name="country", animation_frame="year", range_color=[20,80])
+fig.show()
+
+movehub_rating = "None" #@param ["None", "Low", "Med", "High"]
+purchase_power = "High" #@param ["None", "Low", "Med", "High"]
+health_care = "Low" #@param ["None", "Low", "Med", "High"]
+quality_of_life = "None" #@param ["None", "Low", "Med", "High"]
+pollution = "None" #@param ["None", "Low", "Med", "High"]
+crime_rating = "None" #@param ["None", "Low", "Med", "High"]
+
+weights = [
+  movehub_rating,
+  purchase_power,
+  health_care,
+  quality_of_life,
+  pollution,
+  crime_rating,
+]
+replace = {'None': 0, 'Low': 1, 'Med': 2, 'High': 3}
+weights = np.array([replace[x] for x in weights])
+weights *= [1, 1, 1, 1, -1, -1]
+
+features = ['Movehub Rating', 'Purchase Power', 'Health Care', 'Quality of Life', 'Pollution', 'Crime Rating']
+norm = lambda xs: (xs-xs.min())/(xs.max()-xs.min())
+
+df['Score'] = norm(df[features].dot(weights))*10
+
+fig = px.scatter_mapbox(df.sort_values('Score', ascending=False).round(),
+                        lat="lat", lon="lng", color="Score", hover_name="City",
+                        hover_data=features,
+                        color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=1,
+                        mapbox_style="carto-positron")
+fig.show()
+
+df.sort_values('Score', ascending=False)[['City', 'Score'] + features].round()
+
+
