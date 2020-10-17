@@ -42,7 +42,7 @@ A myriad of decisions go into picking the perfect place to call home — politic
 - Machine Learning Part 2 - Applied: Sat, 21:30-22:45
 """)
 
-df = pd.read_csv('https://drive.google.com/uc?id=1hSMhl-JeTCX-t72KjhasTQoL1LdWSRhw')
+df = pd.read_csv('https://drive.google.com/uc?id=1tB6KDerIu4qbywTOHovkSOUC99lebPhQ')
 st.write(df.head())
 
 df_1= px.data.gapminder()
