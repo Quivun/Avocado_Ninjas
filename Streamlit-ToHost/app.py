@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 import numpy as np
-
 st.write("""
 # City Search Tool
 """)
@@ -20,80 +19,56 @@ quality_of_life = "None" #@param ["None", "Low", "Med", "High"]
 pollution = "None" #@param ["None", "Low", "Med", "High"]
 crime_rating = "None" #@param ["None", "Low", "Med", "High"]
 
-#@title Answer the following. The higher the answer, the more important a factor is in determining where you live.
-#@markdown ---
+st.write("""# Answer the following. 
+The higher the answer, the more important a factor is in determining where you live.""")
+st.markdown("---")
 
-#@markdown Economy
-#@markdown ---
-#@markdown How much emphasis do you place on the economy of where you're living?
-gdp = 7 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How important is purchasing power to you?
-purchase_power = 10 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How important is the cost of rent to you?
-rent = 7 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How important is having disposable income?
-disposable_income = 10 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown ---
+st.markdown("Economy")
+st.markdown("---")
+gdp = st.slider("How much emphasis do you place on the economy of where you're living?", 0,10,1)
+purchase_power = st.slider("How important is purchasing power to you?", 0,10,1)
+rent = st.slider("How important is the cost of rent to you?", 0,10,1)
+disposable_income = st.slider("How important is having disposable income?", 0,10,1)
+st.markdown("---")
 
-#@markdown Health
-#@markdown ---
-#@markdown How important is a country's healthcare quality and satisfaction?
-health_care = 6 #@param {type:"slider", min:0, max:10, step:1}
 
-#@markdown Is the life expectancy of where you want to live important?
-life_expectancy = 3 #@param {type:"slider", min:0, max:10, step:1}
+st.markdown("Health")
+st.markdown("---")
+health_care = st.slider("How important is a country's healthcare quality and satisfaction?",0,10,1)
+life_expectancy = st.slider("Is the life expectancy of where you want to live important?",0,10,1)
+st.markdown("---")
 
-#@markdown ---
+st.markdown("Personal Values")
+st.markdown("---")
+happiness_score = st.slider("Is happinness important to you?",0,10,1)
+quality_of_life = st.slider("How important is the quality of life?",0,10,1)
+social_support = st.slider("Is it important to feel like you have a support system within your community?",0,10,1)
+freedom = st.slider("How much do you value your freedom?",0,10,1)
+generosity = st.slider("Do you care if the average person is generous?",0,10,1)
+st.markdown("---")
 
-#@markdown Personal Values
-#@markdown ---
-#@markdown Is happinness important to you?
-happiness_score = 10 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How important is the quality of life?
-quality_of_life = 7 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown Is it important to feel like you have a support system within your community?
-social_support = 7 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How much do you value your freedom?
-freedom = 6 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown Do you care if the average person is generous?
-generosity = 2 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown ---
+st.markdown("Common Purchases")
+st.markdown("---")
+cappuccino = st.slider("How often do you purchase coffee?",0,10,1)
+cinema = st.slider("How often do you go to the cinema?",0,10,1)
+wine = st.slider("How often do you purchase wine?",0,10,1)
+gasoline = st.slider("Is the cost of gasoline important to you?",0,10,1)
+st.markdown("---")
 
-#@markdown Common Purchases
-#@markdown ---
-#@markdown How often do you purchase coffee?
-cappuccino = 5 #@param {type:"slider", min:0, max:10, step:1}
+st.markdown("Potential Dangers")
+st.markdown("---")
+pollution = st.slider("How concerned are you about pollution?",0,10,1)
+crime_rating = st.slider("How concerned are you about crime?",0,10,1)
+corruption = st.slider("How concerned are you about business and government corruption?",0,10,1)
+st.markdown("---")
 
-#@markdown How often do you go to the cinema?
-cinema = 0 #@param {type:"slider", min:0, max:10, step:1}
-
-#@markdown How often do you purchase wine?
-wine = 0 #@param {type:"slider", min:0, max:10, step:1}
-
-#@markdown Is the cost of gasoline important to you?
-gasoline = 7 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown ---
-#@markdown Potential Dangers
-#@markdown ---
-#@markdown How concerned are you about pollution?
-pollution = 10 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How concerned are you about crime?
-crime_rating = 8 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How concerned are you about business and government corruption?
-corruption = 6 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown ---
-
-#@markdown Miscellaneous
-#@markdown ---
-#@markdown How important is MoveHub's (https://www.movehub.com/city-rankings/) rating to you?
-movehub_rating = 0 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown Is it important to you to live in a "developed" country?
-hdi = 7 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown Would you like to have a lot of culturally significant sites in your country?
-world_heritage_sites = 10 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown How important is it you to stay within the US?
-international = 10 #@param {type:"slider", min:0, max:10, step:1}
-#@markdown ---
+st.markdown("Miscellaneous")
+st.markdown("---")
+movehub_rating = st.slider("How important is MoveHub's (https://www.movehub.com/city-rankings/) rating to you?",0,10,1)
+hdi = st.slider("Is it important to you to live in a \"developed\" country?",0,10,1)
+world_heritage_sites = st.slider("Would you like to have a lot of culturally significant sites in your country?",0,10,1)
+international = st.slider("How important is it you to stay within the US?",0,10,1)
+st.markdown("---")
 
 weights = [
   movehub_rating,
