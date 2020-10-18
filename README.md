@@ -3,7 +3,8 @@ Tamu Datathon
 
 Check out the city_search file in main to mess with our algorithm!
 
-#Dataset Sources
+***Dataset Sources***
+
 MoveHub City Rankings: https://www.kaggle.com/blitzr/movehub-city-rankings?select=movehubcostofliving.csv
 Human Development Indices: https://data.humdata.org/dataset/human-development-index-hdi
 Happinness Scores: https://www.kaggle.com/unsdsn/world-happiness
