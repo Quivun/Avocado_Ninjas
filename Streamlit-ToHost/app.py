@@ -1,6 +1,4 @@
-import yfinance as yf
 import pandas as pd
-import sklearn as sk
 import streamlit as st
 import plotly.express as px
 import numpy as np
@@ -96,8 +94,6 @@ world_heritage_sites = 10 #@param {type:"slider", min:0, max:10, step:1}
 #@markdown How important is it you to stay within the US?
 international = 10 #@param {type:"slider", min:0, max:10, step:1}
 #@markdown ---
-
-import numpy as np
 
 weights = [
   movehub_rating,
